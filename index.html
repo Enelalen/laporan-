@@ -237,6 +237,7 @@
       justify-content: space-between;
       gap: 28px;
       height: 62px;
+      min-width: 0;
     }
 
     .merek {
@@ -269,7 +270,12 @@
     .menu-atas {
       display: flex;
       align-items: center;
+      flex: 0 0 auto;
       gap: 26px;
+    }
+
+    .label-pendek {
+      display: none;
     }
 
     .menu-atas a {
@@ -1404,9 +1410,24 @@
         width: calc(100% - 40px);
       }
 
+      .bar-atas .wadah {
+        height: 54px;
+        gap: 12px;
+      }
+
+      .merek {
+        gap: 8px;
+        font-size: 16px;
+      }
+
+      .tombol-kecil {
+        padding: 8px 11px;
+        font-size: 10.5px;
+      }
+
       .wm {
         width: calc(100% - 40px);
-        margin-bottom: 32px;
+        margin-bottom: 28px;
       }
 
       .wm-stamp {
@@ -1420,12 +1441,86 @@
       }
 
       .sampul {
-        padding-top: 42px;
+        padding-top: 34px;
+        padding-bottom: 44px;
+      }
+
+      .kicker {
+        margin-bottom: 18px;
+      }
+
+      .sampul-kisi {
+        gap: 34px;
+      }
+
+      .sampul .dek {
+        margin-top: 20px;
+      }
+
+      .sampul-aksi {
+        margin-top: 24px;
       }
 
       .sampul-meta {
-        gap: 24px 32px;
-        margin-top: 40px;
+        gap: 20px 28px;
+        margin-top: 30px;
+      }
+
+      .skema {
+        width: min(100%, 460px);
+        margin-inline: auto;
+      }
+
+      .daftar-isi {
+        position: static;
+        margin-bottom: 4px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--garis);
+      }
+
+      .daftar-isi > p:first-child {
+        margin-bottom: 10px;
+      }
+
+      .daftar-isi ol {
+        display: flex;
+        gap: 8px;
+        margin-inline: -2px;
+        padding: 2px 2px 8px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .daftar-isi ol::-webkit-scrollbar {
+        display: none;
+      }
+
+      .daftar-isi li {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      .daftar-isi a {
+        margin-left: 0;
+        padding: 7px 11px;
+        border: 1px solid var(--garis);
+        border-radius: 999px;
+        background: var(--kertas-putih);
+        white-space: nowrap;
+        font-size: 12.5px;
+      }
+
+      .daftar-isi li.aktif a {
+        color: var(--kertas-putih);
+        border-color: var(--tinta);
+        background: var(--tinta);
+      }
+
+      .daftar-isi li.aktif a .no {
+        color: rgba(250, 248, 243, 0.7);
       }
 
       .bagian-kepala {
@@ -1476,8 +1571,28 @@
     }
 
     @media (max-width: 520px) {
+      .wadah {
+        width: calc(100% - 32px);
+      }
+
+      .bar-atas .wadah {
+        height: 52px;
+      }
+
+      .merek {
+        font-size: 15px;
+      }
+
       .merek span {
         display: none;
+      }
+
+      .label-panjang {
+        display: none;
+      }
+
+      .label-pendek {
+        display: inline;
       }
 
       .wm {
@@ -1499,15 +1614,33 @@
       }
 
       .sampul h1 {
-        font-size: clamp(54px, 16vw, 72px);
+        font-size: clamp(48px, 15vw, 64px);
+        line-height: 0.88;
       }
 
       .sampul-aksi {
-        gap: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
       }
 
-      .daftar-isi ol {
+      .sampul-aksi .tombol {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .sampul-meta {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 18px;
+      }
+
+      .sampul-meta > div:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .daftar-isi a {
+        font-size: 12px;
       }
 
       .fakta {
@@ -1528,8 +1661,8 @@
       }
 
       .wadah-tabel {
-        margin-right: -20px;
-        padding-right: 20px;
+        margin-right: -16px;
+        padding-right: 16px;
       }
     }
 
@@ -1646,7 +1779,10 @@
         <a href="#ringkasan">Ringkasan</a>
         <a href="#proses">Proses</a>
         <a href="#uji">Hasil uji</a>
-        <a class="tombol-kecil" href="https://roketnela.my.canva.site/" target="_blank" rel="noopener">Mainkan game ↗</a>
+        <a class="tombol-kecil" href="https://roketnela.my.canva.site/" target="_blank" rel="noopener">
+          <span class="label-panjang">Mainkan game ↗</span>
+          <span class="label-pendek">Game ↗</span>
+        </a>
       </nav>
     </div>
   </header>
@@ -7418,10 +7554,31 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
       window.addEventListener("load", mintaPerbarui);
       perbaruiKemajuan();
 
+      var aktifSekarang = "";
+
       function tandaiAktif(id) {
+        if (id === aktifSekarang) return;
+        aktifSekarang = id;
+
         tautanIsi.forEach(function (tautan) {
           var aktif = tautan.getAttribute("href") === "#" + id;
-          tautan.parentElement.classList.toggle("aktif", aktif);
+          var item = tautan.parentElement;
+          item.classList.toggle("aktif", aktif);
+
+          if (!aktif || !window.matchMedia("(max-width: 760px)").matches) return;
+
+          var daftar = tautan.closest("ol");
+          if (!daftar) return;
+
+          var rc = tautan.getBoundingClientRect();
+          var rd = daftar.getBoundingClientRect();
+          var kiri = daftar.scrollLeft + (rc.left - rd.left) - daftar.clientWidth / 2 + rc.width / 2;
+
+          if (typeof daftar.scrollTo === "function") {
+            daftar.scrollTo({ left: kiri, behavior: "smooth" });
+          } else {
+            daftar.scrollLeft = kiri;
+          }
         });
       }
 
