@@ -1360,6 +1360,64 @@
     /* ============================================================
        14 · RESPONSIF
        ============================================================ */
+    @media (min-width: 1200px) {
+      :root {
+        --lebar: 1320px;
+      }
+
+      body {
+        font-size: 18px;
+      }
+
+      .merek {
+        font-size: 21px;
+      }
+
+      .menu-atas a,
+      .tombol-kecil {
+        font-size: 12.5px;
+      }
+
+      .sampul h1 {
+        font-size: clamp(84px, 8.6vw, 128px);
+      }
+
+      .sampul .dek {
+        max-width: 48ch;
+        font-size: 19px;
+      }
+
+      .bagian h2 {
+        font-size: clamp(38px, 3.6vw, 50px);
+      }
+
+      .bagian h3 {
+        font-size: 25px;
+      }
+
+      .lead {
+        font-size: 20px;
+      }
+
+      .daftar-isi a {
+        font-size: 14.5px;
+      }
+
+      .fakta dd {
+        font-size: 20px;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      :root {
+        --lebar: 1440px;
+      }
+
+      body {
+        font-size: 19px;
+      }
+    }
+
     @media (max-width: 1000px) {
       .sampul-kisi {
         grid-template-columns: 1fr;
