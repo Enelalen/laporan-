@@ -1358,6 +1358,146 @@
     }
 
     /* ============================================================
+       13b · DAFTAR, POKOK, MANFAAT, BAGAN & PUSTAKA (BAB I–III)
+       ============================================================ */
+    .daftar-nomor {
+      margin-top: 24px;
+      padding: 0;
+      list-style: none;
+      counter-reset: daftar;
+      border-top: 1px solid var(--garis-2);
+    }
+
+    .daftar-nomor li {
+      counter-increment: daftar;
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--garis);
+      color: var(--tinta-2);
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
+
+    .daftar-nomor li::before {
+      content: counter(daftar, decimal-leading-zero);
+      padding-top: 4px;
+      color: var(--aksen);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+    }
+
+    .daftar-nomor strong {
+      color: var(--tinta);
+    }
+
+    .pokok {
+      margin-top: 22px;
+      padding-left: 22px;
+      border-left: 2px solid var(--garis-2);
+    }
+
+    .pokok > div + div {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--garis);
+    }
+
+    .pokok h4 {
+      margin: 0 0 6px;
+      color: var(--aksen-2);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .pokok p {
+      margin-bottom: 0;
+      font-size: 15.5px;
+      line-height: 1.72;
+    }
+
+    .daftar-ringkas {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--tinta-2);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .daftar-ringkas li + li {
+      margin-top: 8px;
+    }
+
+    .manfaat {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .manfaat > div {
+      padding: 18px 18px 20px;
+      background: var(--kertas-putih);
+      border: 1px solid var(--garis);
+      border-top: 2px solid var(--aksen);
+    }
+
+    .manfaat h4 {
+      margin: 0 0 12px;
+      color: var(--tinta);
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .manfaat ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--tinta-2);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .manfaat li + li {
+      margin-top: 8px;
+    }
+
+    .kode.bagan {
+      margin-top: 24px;
+    }
+
+    .kode.bagan pre {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .daftar-pustaka {
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--garis-2);
+    }
+
+    .daftar-pustaka li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--garis);
+      color: var(--tinta-2);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .daftar-pustaka em {
+      color: var(--tinta);
+    }
+
+    /* ============================================================
        14 · RESPONSIF
        ============================================================ */
     @media (min-width: 1200px) {
@@ -1418,6 +1558,7 @@
       }
     }
 
+    /* 14a · Tablet: tata letak dua kolom dilipat, daftar isi jadi ringkas */
     @media (max-width: 1000px) {
       .sampul-kisi {
         grid-template-columns: 1fr;
@@ -1463,7 +1604,9 @@
       }
     }
 
+    /* 14b · HP: satu kolom, daftar isi berupa chip yang bisa digeser */
     @media (max-width: 760px) {
+      /* Kerangka dan bar atas */
       .wadah {
         width: calc(100% - 40px);
       }
@@ -1488,16 +1631,22 @@
         margin-bottom: 28px;
       }
 
+      /* Kop resmi */
       .wm-stamp {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
 
+      .wm-rincian {
+        justify-content: flex-start;
+      }
+
       .menu-atas a:not(.tombol-kecil) {
         display: none;
       }
 
+      /* Sampul */
       .sampul {
         padding-top: 34px;
         padding-bottom: 44px;
@@ -1529,6 +1678,7 @@
         margin-inline: auto;
       }
 
+      /* Daftar isi: chip horizontal, aktif otomatis digeser ke tengah */
       .daftar-isi {
         position: static;
         margin-bottom: 4px;
@@ -1581,8 +1731,24 @@
         color: rgba(250, 248, 243, 0.7);
       }
 
+      /* Isi laporan dan komponen bab I–III */
       .bagian-kepala {
+        align-items: flex-start;
         gap: 12px;
+      }
+
+      .manfaat {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .daftar-nomor li {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .pokok {
+        padding-left: 16px;
       }
 
       .fakta {
@@ -1619,6 +1785,14 @@
         grid-template-columns: 1fr;
       }
 
+      .pratinjau-bar {
+        flex-wrap: wrap;
+      }
+
+      .pratinjau-pintu {
+        min-height: 300px;
+      }
+
       .tarik {
         padding: 18px 20px;
       }
@@ -1628,7 +1802,9 @@
       }
     }
 
+    /* 14c · HP sempit: tipografi dan komponen diperkecil tanpa memotong teks */
     @media (max-width: 520px) {
+      /* Kerangka dan kop */
       .wadah {
         width: calc(100% - 32px);
       }
@@ -1697,8 +1873,34 @@
         grid-column: 1 / -1;
       }
 
+      /* Daftar isi dan judul bab */
       .daftar-isi a {
         font-size: 12px;
+      }
+
+      .bagian h2 {
+        font-size: clamp(28px, 8vw, 34px);
+      }
+
+      .bagian h3 {
+        margin-top: 30px;
+        font-size: 20px;
+      }
+
+      .manfaat > div {
+        padding: 16px;
+      }
+
+      .kode.bagan pre {
+        font-size: 10.5px;
+      }
+
+      .daftar-pustaka li {
+        font-size: 14px;
+      }
+
+      .penutup-bawah {
+        font-size: 11px;
       }
 
       .fakta {
@@ -1828,13 +2030,13 @@
 </head>
 <body>
   <div class="kemajuan" aria-hidden="true"><span id="bilahKemajuan"></span></div>
-  <a class="lewati" href="#ringkasan">Lewati ke isi laporan</a>
+  <a class="lewati" href="#pendahuluan">Lewati ke isi laporan</a>
 
   <header class="bar-atas">
     <div class="wadah">
       <a class="merek" href="#atas">Roket Algoritma <span>— laporan</span></a>
       <nav class="menu-atas" aria-label="Navigasi utama">
-        <a href="#ringkasan">Ringkasan</a>
+        <a href="#pendahuluan">Pendahuluan</a>
         <a href="#proses">Proses</a>
         <a href="#uji">Hasil uji</a>
         <a class="tombol-kecil" href="https://roketnela.my.canva.site/" target="_blank" rel="noopener">
@@ -1988,16 +2190,20 @@
       <aside class="daftar-isi" aria-label="Daftar isi">
         <p>Daftar isi</p>
         <ol>
-          <li class="aktif"><a href="#ringkasan"><span class="no">01</span> Ringkasan</a></li>
-          <li><a href="#mekanik"><span class="no">02</span> Mekanik permainan</a></li>
-          <li><a href="#proses"><span class="no">03</span> Proses pembuatan</a></li>
-          <li><a href="#prompt"><span class="no">04</span> Prompt &amp; revisi</a></li>
-          <li><a href="#kode"><span class="no">05</span> Kode lengkap</a></li>
-          <li><a href="#bedah"><span class="no">06</span> Bedah kode</a></li>
-          <li><a href="#uji"><span class="no">07</span> Hasil uji (Bab V)</a></li>
-          <li><a href="#kendala"><span class="no">08</span> Kendala</a></li>
-          <li><a href="#gambar"><span class="no">09</span> Tangkapan layar</a></li>
-          <li><a href="#pratinjau"><span class="no">10</span> Pratinjau</a></li>
+          <li class="aktif"><a href="#pendahuluan"><span class="no">01</span> Pendahuluan</a></li>
+          <li><a href="#landasan"><span class="no">02</span> Landasan teori</a></li>
+          <li><a href="#perancangan"><span class="no">03</span> Perancangan game</a></li>
+          <li><a href="#ringkasan"><span class="no">04</span> Ringkasan proses</a></li>
+          <li><a href="#mekanik"><span class="no">05</span> Mekanik permainan</a></li>
+          <li><a href="#proses"><span class="no">06</span> Proses pembuatan</a></li>
+          <li><a href="#prompt"><span class="no">07</span> Prompt &amp; revisi</a></li>
+          <li><a href="#kode"><span class="no">08</span> Kode lengkap</a></li>
+          <li><a href="#bedah"><span class="no">09</span> Bedah kode</a></li>
+          <li><a href="#uji"><span class="no">10</span> Hasil uji (Bab V)</a></li>
+          <li><a href="#kendala"><span class="no">11</span> Kendala</a></li>
+          <li><a href="#gambar"><span class="no">12</span> Tangkapan layar</a></li>
+          <li><a href="#pratinjau"><span class="no">13</span> Pratinjau</a></li>
+          <li><a href="#pustaka"><span class="no">14</span> Daftar pustaka</a></li>
         </ol>
         <p class="isi-catatan">
           Draft 3 · ±2.800 baris<br>
@@ -2007,9 +2213,339 @@
       </aside>
 
       <article class="laporan">
-        <section id="ringkasan" class="bagian">
+        <section id="pendahuluan" class="bagian">
           <div class="bagian-kepala">
             <span class="bagian-no">01</span>
+            <div>
+              <span class="subbab">Bab I · Pendahuluan</span>
+              <h2>Mengapa Roket Algoritma dibuat.</h2>
+            </div>
+          </div>
+
+          <h3>1.1 Latar Belakang</h3>
+          <p class="lead">
+            Perkembangan teknologi informasi dan komunikasi saat ini berlangsung dengan sangat pesat. Berbagai teknologi digital telah dimanfaatkan dalam kehidupan sehari-hari, termasuk dalam bidang pendidikan. Salah satu perkembangan teknologi yang cukup berpengaruh adalah kecerdasan buatan atau <em>Artificial Intelligence</em> (AI). Teknologi AI mampu membantu manusia dalam menyelesaikan berbagai pekerjaan, seperti menghasilkan tulisan, membuat desain, mengolah informasi, hingga membantu proses pembuatan program komputer. Dengan adanya teknologi tersebut, proses pengembangan suatu karya digital dapat dilakukan dengan lebih mudah dan efisien.
+          </p>
+          <p>
+            Dalam bidang pendidikan, khususnya mata pelajaran Informatika, pemanfaatan AI dapat menjadi sarana untuk mengenal dan mempelajari dunia pemrograman. Salah satu bentuk penerapannya adalah pembuatan game interaktif berbasis web. Melalui pembuatan game, siswa tidak hanya mempelajari teori pemrograman, tetapi juga dapat melihat bagaimana suatu perintah, algoritma, dan logika program diterapkan dalam sebuah aplikasi yang dapat digunakan secara langsung.
+          </p>
+          <p>
+            Berdasarkan hal tersebut, dalam kegiatan Penilaian Sumatif Akhir Jenjang (PSAJ) mata pelajaran Informatika, penulis memilih untuk membuat sebuah game interaktif berbasis web yang berjudul <em>Roket Algoritma</em>. Game ini dipilih karena memiliki konsep permainan yang menarik dengan menggabungkan unsur hiburan dan pembelajaran Informatika. Selain itu, tema luar angkasa yang digunakan memberikan pengalaman bermain yang berbeda melalui karakter roket, meteor, dan alien sebagai bagian utama dalam permainan.
+          </p>
+          <p>
+            <em>Roket Algoritma</em> merupakan permainan yang mengangkat cerita tentang sebuah roket yang harus melewati perjalanan di luar angkasa dengan menghindari meteor dan menghadapi alien. Pemain bertugas mengendalikan roket agar tidak bertabrakan dengan meteor yang muncul selama permainan berlangsung. Pada kondisi tertentu, alien akan muncul satu per satu sebagai musuh yang harus dihadapi oleh pemain. Roket akan menembakkan laser ke arah alien, kemudian alien memberikan pertanyaan seputar materi Informatika.
+          </p>
+          <p>
+            Salah satu keunikan dari game ini adalah adanya sistem kuis yang menjadi bagian dari mekanisme permainan. Terdapat 15 pertanyaan pilihan ganda yang terdiri dari lima pertanyaan materi Informatika kelas X, lima pertanyaan kelas XI, dan lima pertanyaan kelas XII. Pemain harus menjawab pertanyaan yang diberikan oleh alien dengan benar agar dapat melanjutkan permainan. Setiap pertanyaan juga memiliki batas waktu untuk dijawab, sehingga pemain dituntut untuk berpikir cepat, teliti, dan memahami materi yang diberikan.
+          </p>
+          <p>
+            Dalam permainan ini, pemain diberikan tiga nyawa sebagai kesempatan untuk menyelesaikan misi. Nyawa akan berkurang apabila roket bertabrakan dengan meteor atau pemain memberikan jawaban yang salah terhadap pertanyaan alien. Apabila seluruh nyawa habis, permainan akan berakhir dan pemain dinyatakan kalah. Selain itu, batas waktu menjawab pertanyaan juga menjadi salah satu tantangan yang harus diperhatikan oleh pemain. Game ini memiliki target skor akhir sebesar 80 poin sebagai bagian dari sistem penilaian permainan.
+          </p>
+          <p>
+            Dalam proses pembuatannya, penulis memanfaatkan teknologi kecerdasan buatan (AI) melalui Canva Code dengan memberikan instruksi atau prompt yang berisi konsep, cerita, mekanisme permainan, tampilan, kontrol, serta struktur kode yang dibutuhkan. AI berperan sebagai alat bantu untuk menghasilkan rancangan awal program berdasarkan instruksi yang diberikan. Namun, hasil yang dihasilkan AI tetap perlu diperiksa, dipahami, diuji, dan disesuaikan agar game dapat berjalan sesuai dengan konsep yang telah direncanakan.
+          </p>
+          <p>
+            Proses pembuatan game ini juga memberikan kesempatan kepada penulis untuk mempelajari struktur program yang terdiri dari beberapa bagian, seperti pengaturan dan bank soal, tampilan awal, karakter, rintangan, kontrol, game loop, logika kuis dan tabrakan, sistem skor dan nyawa, kondisi menang dan kalah, serta fitur mulai ulang. Setiap bagian memiliki fungsi yang saling berkaitan dalam menjalankan permainan secara keseluruhan.
+          </p>
+          <p>
+            Dengan demikian, pembuatan game <em>Roket Algoritma</em> tidak hanya bertujuan menghasilkan sebuah permainan digital, tetapi juga menjadi sarana untuk memahami penerapan teknologi AI dalam pemrograman. Melalui kegiatan ini, penulis diharapkan dapat memperoleh pengalaman dalam mengembangkan karya digital, memahami fungsi kode program, serta mengetahui bahwa teknologi AI dapat dimanfaatkan sebagai alat bantu pembelajaran apabila digunakan secara tepat dan bertanggung jawab.
+          </p>
+
+          <h3>1.2 Tujuan</h3>
+          <p>
+            Pembuatan game interaktif berbasis web yang berjudul Roket Algoritma memiliki beberapa tujuan yang ingin dicapai, baik dari segi pengembangan permainan maupun pembelajaran Informatika. Adapun tujuan tersebut adalah sebagai berikut:
+          </p>
+          <ol class="daftar-nomor">
+            <li><strong>Menghasilkan game interaktif berbasis web.</strong> Membuat sebuah permainan digital berjudul Roket Algoritma yang dapat dimainkan melalui perangkat HP maupun laptop dengan tampilan dan sistem permainan yang menarik serta mudah digunakan.</li>
+            <li><strong>Menerapkan pemanfaatan teknologi AI.</strong> Menggunakan kecerdasan buatan melalui Canva Code sebagai alat bantu dalam proses pembuatan game, mulai dari menyusun konsep hingga menghasilkan rancangan program berdasarkan prompt yang diberikan.</li>
+            <li><strong>Memahami struktur dan fungsi kode program.</strong> Mempelajari bagian-bagian kode yang digunakan dalam pembuatan game, mulai dari pengaturan awal, karakter, rintangan, kontrol, hingga sistem permainan dan kondisi akhir.</li>
+            <li><strong>Menerapkan konsep dasar pemrograman.</strong> Memahami penerapan variabel, fungsi, percabangan, perulangan, algoritma, serta logika pemrograman melalui mekanisme yang terdapat dalam game.</li>
+            <li><strong>Menggabungkan unsur hiburan dan pendidikan.</strong> Mengembangkan permainan yang tidak hanya memberikan pengalaman bermain, tetapi juga menghadirkan 15 pertanyaan Informatika dari materi kelas X, XI, dan XII sebagai sarana untuk menguji pengetahuan pemain.</li>
+            <li><strong>Melatih kemampuan menganalisis dan mengembangkan program.</strong> Mengidentifikasi bagian permainan yang perlu diperbaiki, melakukan modifikasi kode, serta menguji hasil perubahan agar permainan dapat berjalan sesuai dengan tujuan yang diharapkan.</li>
+            <li><strong>Menyusun dokumentasi proses pembuatan game.</strong> Membuat laporan yang menjelaskan proses pengembangan permainan, termasuk kode sebelum dimodifikasi, kode setelah dimodifikasi, alasan perubahan, dan hasil dari setiap pengembangan yang dilakukan.</li>
+          </ol>
+
+          <h3>1.3 Manfaat</h3>
+          <p>
+            Pembuatan game Roket Algoritma diharapkan dapat memberikan manfaat bagi penulis, pengguna permainan, maupun lingkungan sekolah. Manfaat tersebut tidak hanya berkaitan dengan penggunaan game sebagai hiburan, tetapi juga dengan pemanfaatan teknologi AI dan penerapan ilmu Informatika dalam bentuk karya digital.
+          </p>
+          <div class="manfaat">
+            <div>
+              <h4>1. Bagi Siswa atau Penulis</h4>
+              <ul>
+                <li>Menambah pengetahuan dan pemahaman mengenai dasar-dasar pemrograman, khususnya HTML, CSS, dan JavaScript.</li>
+                <li>Melatih kemampuan berpikir logis, kreatif, dan sistematis dalam menyelesaikan permasalahan selama proses pembuatan game.</li>
+                <li>Memberikan pengalaman dalam memanfaatkan teknologi AI sebagai alat bantu untuk menghasilkan sebuah karya digital.</li>
+                <li>Meningkatkan kemampuan dalam membaca, memahami, menganalisis, dan memodifikasi kode program.</li>
+                <li>Melatih ketelitian dan tanggung jawab dalam mengembangkan serta menguji sebuah aplikasi.</li>
+                <li>Menambah wawasan mengenai hubungan antara algoritma, logika pemrograman, dan penerapannya dalam kehidupan digital.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>2. Bagi Pengguna Game</h4>
+              <ul>
+                <li>Memberikan pengalaman bermain game yang menarik dengan tema luar angkasa dan mekanisme permainan yang interaktif.</li>
+                <li>Menjadi sarana hiburan digital yang dapat dimainkan melalui perangkat HP maupun laptop.</li>
+                <li>Menambah pengetahuan mengenai materi Informatika melalui 15 pertanyaan yang mencakup pembelajaran kelas X, XI, dan XII.</li>
+                <li>Melatih konsentrasi, ketelitian, dan kecepatan berpikir melalui tantangan menghindari meteor serta menjawab pertanyaan dalam batas waktu tertentu.</li>
+                <li>Memberikan pengalaman belajar yang lebih menyenangkan melalui perpaduan permainan dan kuis edukatif.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>3. Bagi Sekolah</h4>
+              <ul>
+                <li>Menjadi salah satu contoh penerapan teknologi kecerdasan buatan dalam kegiatan pembelajaran Informatika.</li>
+                <li>Mendorong pemanfaatan teknologi digital sebagai media pembelajaran yang kreatif, interaktif, dan edukatif.</li>
+                <li>Memberikan gambaran mengenai kemampuan siswa dalam menerapkan materi pemrograman ke dalam sebuah karya digital.</li>
+                <li>Menumbuhkan minat dan kreativitas siswa dalam memanfaatkan perkembangan teknologi untuk menghasilkan suatu inovasi.</li>
+                <li>Menjadi dokumentasi hasil pembelajaran dan penerapan keterampilan Informatika melalui kegiatan Penilaian Sumatif Akhir Jenjang (PSAJ).</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="landasan" class="bagian">
+          <div class="bagian-kepala">
+            <span class="bagian-no">02</span>
+            <div>
+              <span class="subbab">Bab II · Landasan Teori</span>
+              <h2>Dasar yang dipakai dalam perancangan.</h2>
+            </div>
+          </div>
+
+          <h3>2.1 Canva dan Canva Code</h3>
+          <p class="lead">
+            Canva merupakan platform desain dan komunikasi visual berbasis web yang dirancang untuk mempermudah pengguna dalam menciptakan berbagai media digital secara daring. Pada awalnya, Canva lebih dikenal sebagai alat untuk menyusun desain grafis statis seperti poster, presentasi, infografis, dan media sosial melalui antarmuka visual serta templat siap pakai. Seiring berkembangnya teknologi komputasi awan dan kecerdasan buatan, kemampuan Canva diperluas untuk mendukung pembuatan media pembelajaran interaktif serta pengembangan purwarupa aplikasi berbasis web.
+          </p>
+          <p>
+            Untuk mewujudkan pembuatan aplikasi interaktif tersebut, Canva menyediakan fitur Canva AI dan Canva Code. Canva Code merupakan fitur berbasis kecerdasan buatan yang mampu menerjemahkan perintah atau deskripsi teks menjadi kode program fungsional sehingga pengguna dapat membangun aplikasi maupun game interaktif tanpa harus menulis seluruh sintaks kode dari nol. Melalui integrasi Canva AI dan Canva Code, rancangan logika permainan, antarmuka pengguna, dan mekanisme interaksi dapat langsung dihasilkan serta dijalankan di dalam peramban web.
+          </p>
+          <p>
+            Secara teknis, game yang dibangun melalui Canva Code menggunakan perpaduan teknologi pengembangan web standar, yaitu HTML (<em>HyperText Markup Language</em>), CSS (<em>Cascading Style Sheets</em>), dan JavaScript murni yang digabungkan ke dalam satu berkas HTML (<em>single-file HTML</em>). HTML berfungsi membentuk kerangka struktur layar, CSS mengatur tata letak dan tampilan responsif agar nyaman dimainkan di layar ponsel maupun laptop, sedangkan JavaScript mengendalikan seluruh logika permainan. Untuk menampilkan arena permainan secara dinamis, digunakan elemen HTML5 <code>&lt;canvas&gt;</code> yang memungkinkan objek grafis digambar secara waktu nyata menggunakan bentuk-bentuk geometris dasar (<em>Canvas Primitive Shapes</em>) seperti persegi, lingkaran, elips, segitiga, dan garis berdasarkan logika sistem koordinat sumbu X dan Y.
+          </p>
+          <p>
+            Dalam pembuatan game <em>Roket Algoritma</em>, Canva berperan sebagai platform utama pengembangan karya digital, sedangkan Canva Code dan Canva AI digunakan untuk menghasilkan struktur kode program berdasarkan konsep yang telah dirancang penulis. Seluruh karakter dan rintangan di dalam arena permainan—meliputi roket, batu meteor, pesawat alien, hingga pancaran laser—dibentuk secara terprogram menggunakan <em>Canvas Primitive Shapes</em> di atas elemen HTML5 Canvas. Sementara itu, elemen antarmuka seperti menu utama, panduan cara bermain, panel skor dan nyawa, jendela pop-up kuis, serta layar menang dan kalah disusun menggunakan lapisan <em>HTML/CSS Overlay</em> yang ditumpuk di atas kanvas agar mudah dibaca dan responsif terhadap sentuhan layar maupun klik mouse.
+          </p>
+
+          <h3>2.2 AI Generatif dan Prompt</h3>
+          <p>
+            Kecerdasan buatan atau <em>Artificial Intelligence</em> (AI) adalah cabang ilmu komputer yang berfokus pada pengembangan sistem agar mampu meniru kemampuan berpikir manusia, seperti memahami instruksi, mengenali pola, mengambil keputusan, dan memecahkan masalah (Mushthofa dkk., 2021). Salah satu jenis teknologi AI yang banyak dimanfaatkan saat ini adalah AI generatif (<em>Generative AI</em>), yaitu sistem kecerdasan buatan yang mampu menghasilkan konten baru—seperti teks, gambar, maupun kode program—berdasarkan pola pengetahuan yang dipelajari dari data latih dalam jumlah besar.
+          </p>
+          <p>
+            Dalam proses pembuatan perangkat lunak, AI generatif bekerja dengan menganalisis maksud dari perintah pengguna, kemudian menyusun baris-baris kode yang sesuai dengan aturan sintaks bahasa pemrograman yang diminta. Untuk mengarahkan hasil kerja AI agar tepat sasaran, pengguna memberikan instruksi tertulis yang disebut <em>prompt</em>. Kualitas dan ketepatan program yang dihasilkan sangat bergantung pada cara penyusunan <em>prompt</em>; semakin jelas, terstruktur, dan spesifik perintah yang diberikan, semakin akurat pula logika dan tampilan aplikasi yang dihasilkan oleh AI.
+          </p>
+          <p>
+            Pada pengembangan game <em>Roket Algoritma</em>, penulis menyusun <em>prompt</em> yang terperinci untuk diberikan kepada Canva AI. <em>Prompt</em> tersebut menetapkan peran sistem sebagai pengembang game sekaligus guru pemrograman, lalu menjabarkan spesifikasi teknis dan aturan main secara sistematis. Rincian tersebut mencakup penggunaan satu berkas HTML dengan HTML5 Canvas, tema perjalanan roket di antariksa, mekanisme dua fase permainan (fase menghindari meteor dan fase melawan alien setiap kelipatan skor lima dengan jeda transisi terkontrol agar meteor berhenti turun saat alien muncul), kontrol gerak roket mengikuti posisi sumbu X pointer maupun tombol panah kiri dan kanan, sistem tiga nyawa, jendela pop-up kuis pilihan ganda, hingga pembagian struktur kode ke dalam sepuluh bagian berurutan yang dilengkapi komentar penjelasan.
+          </p>
+          <p>
+            Meskipun AI generatif mampu menyusun kerangka program dengan cepat, kode yang dihasilkan tidak dapat langsung dianggap sempurna tanpa pemeriksaan. Penulis tetap melakukan pengujian terhadap fungsionalitas permainan, memeriksa alur logika kode, serta melakukan beberapa kali penyempurnaan dari draf awal hingga versi akhir. Sebagai contoh, rancangan awal dari AI masih berfokus pada rintangan meteor dengan target skor rendah dan jumlah soal contoh yang terbatas. Melalui proses evaluasi dan modifikasi lanjutan, game disempurnakan dengan menambahkan mekanisme fase alien dan tembakan laser, memperbarui bank soal menjadi 15 pertanyaan Informatika kelas X, XI, dan XII, menetapkan target skor akhir sebesar 80 poin, serta menambahkan penghitung waktu mundur 10 detik pada saat kuis berlangsung.
+          </p>
+
+          <h3>2.3 Logika Pemrograman Game</h3>
+          <p>
+            Agar game interaktif dapat berjalan secara responsif dan mengikuti aturan yang ditetapkan, diperlukan penerapan logika pemrograman prosedural yang terstruktur. Dalam penyusunan kode game <em>Roket Algoritma</em>, terdapat empat konsep dasar pemrograman yang saling berkaitan dalam menjalankan mekanisme permainan.
+          </p>
+          <div class="pokok">
+            <div>
+              <h4>a. Variabel</h4>
+              <p>
+                Variabel merupakan tempat penyimpanan data di dalam memori program yang memiliki nama pengenal dan nilainya dapat berubah selama program dijalankan (Mushthofa dkk., 2021). Di dalam game <em>Roket Algoritma</em>, variabel digunakan untuk menyimpan dan memantau berbagai data keadaan permainan secara dinamis. Contoh penerapannya meliputi variabel <code>skor</code> untuk mencatat perolehan poin pemain dari nol hingga target 80, variabel <code>nyawa</code> untuk menyimpan sisa kesempatan pemain yang bernilai awal tiga, variabel <code>roket.x</code> dan <code>roket.y</code> untuk mencatat posisi koordinat roket di layar, variabel kecepatan jatuh pada setiap objek meteor yang terus meningkat seiring bertambahnya skor, serta variabel <code>sisaWaktuKuis</code> untuk menyimpan sisa waktu 10 detik saat pemain menjawab soal dari alien.
+              </p>
+            </div>
+            <div>
+              <h4>b. Percabangan</h4>
+              <p>
+                Percabangan (<em>conditional statement</em>) adalah struktur logika yang berfungsi mengambil keputusan dan menentukan tindakan program berdasarkan terpenuhi atau tidaknya suatu kondisi tertentu, seperti penggunaan pernyataan <code>if</code>, <code>else if</code>, dan <code>else</code> (MDN). Pada game <em>Roket Algoritma</em>, percabangan mengatur pergantian fase permainan, evaluasi jawaban kuis, serta penentuan kondisi menang dan kalah. Sebagai contoh, program memeriksa perolehan skor secara terus-menerus; apabila skor mencapai kelipatan lima, sistem menghentikan kemunculan meteor dan memulai fase alien. Selain itu, saat pemain memilih jawaban pada kuis alien, percabangan menentukan dampaknya: jika jawaban benar, alien dihancurkan dan pemain mendapat bonus dua poin, sedangkan jika jawaban salah atau waktu 10 detik habis, alien menembakkan laser merah yang mengurangi satu nyawa pemain hingga memicu layar kekalahan (<em>game over</em>) apabila nilai <code>nyawa</code> mencapai nol.
+              </p>
+            </div>
+            <div>
+              <h4>c. Perulangan</h4>
+              <p>
+                Perulangan (<em>looping</em>) merupakan struktur kendali pemrograman yang menjalankan serangkaian instruksi secara berulang-ulang selama kondisi tertentu masih terpenuhi (MDN). Dalam pemrograman game berbasis HTML5 Canvas, perulangan utama diwujudkan melalui siklus <em>game loop</em> menggunakan fungsi <code>requestAnimationFrame</code> yang berjalan secara terus-menerus sekitar 60 kali per detik (<em>frame per second</em>) sehingga pergerakan roket, meteor, dan laser tampak halus di layar. Selain itu, perulangan <code>for</code> diterapkan untuk memperbarui posisi jatuh seluruh meteor yang tersimpan di dalam array <code>daftarMeteor</code>, memeriksa potensi tabrakan antara roket dan setiap meteor pada setiap <em>frame</em>, serta menampilkan jumlah ikon hati di antarmuka sesuai sisa nyawa pemain.
+              </p>
+            </div>
+            <div>
+              <h4>d. Fungsi</h4>
+              <p>
+                Fungsi (<em>function</em>) adalah sekumpulan perintah yang dikelompokkan ke dalam satu blok bernama untuk menjalankan tugas tertentu dan dapat dipanggil kembali kapan saja diperlukan (MDN). Penggunaan fungsi membuat kode program lebih terstruktur, mudah dibaca, dan mudah diperbaiki apabila ditemukan kesalahan logika. Dalam game <em>Roket Algoritma</em>, setiap tugas utama dipisahkan ke dalam fungsi-fungsi berbahasa Indonesia yang jelas, seperti <code>perbaruiRoket</code> dan <code>gambarRoket</code> untuk mengatur gerak serta tampilan roket, <code>buatMeteor</code> dan <code>perbaruiMeteor</code> untuk memunculkan dan menggerakkan rintangan meteor, <code>periksaTabrakanMeteor</code> untuk mendeteksi tumbukan objek, <code>bukaKuis</code> dan <code>jawabSoal</code> untuk mengelola sistem pertanyaan alien, serta <code>tambahSkorMeteor</code>, <code>kurangiNyawa</code>, <code>menangPermainan</code>, dan <code>kalahPermainan</code> untuk mengatur penilaian dan akhir permainan.
+              </p>
+            </div>
+          </div>
+
+          <h3>2.4 Berpikir Komputasional</h3>
+          <p>
+            Berpikir komputasional (<em>computational thinking</em>) adalah pendekatan pemecahan masalah secara logis, sistematis, dan terstruktur dengan mengadopsi konsep-konsep dasar ilmu komputer sehingga solusi dapat dirancang dan dijalankan secara efektif (Wing, 2006; Mushthofa dkk., 2021). Dalam proses perancangan hingga penyusunan logika game <em>Roket Algoritma</em>, keempat pilar berpikir komputasional diterapkan secara menyeluruh.
+          </p>
+          <div class="pokok">
+            <div>
+              <h4>a. Dekomposisi</h4>
+              <p>
+                Dekomposisi merupakan proses memecah suatu permasalahan atau sistem yang kompleks menjadi bagian-bagian kecil yang lebih spesifik agar mudah dikerjakan dan dikelola (Mushthofa dkk., 2021). Pada pengembangan game <em>Roket Algoritma</em>, keseluruhan program dipecah secara teratur ke dalam sepuluh bagian kode utama yang dipisahkan dengan komentar penanda. Kesepuluh bagian tersebut meliputi pengaturan konstanta dan bank soal, tampilan awal (menu utama dan cara bermain), karakter roket, rintangan (meteor dan alien), sistem kontrol input, <em>game loop</em> dan pengelola status (<em>state manager</em>), logika kuis dan deteksi tabrakan, pengaturan skor dan nyawa, kondisi menang dan kalah, serta fungsi mulai ulang permainan.
+              </p>
+            </div>
+            <div>
+              <h4>b. Pengenalan Pola</h4>
+              <p>
+                Pengenalan pola (<em>pattern recognition</em>) adalah kemampuan mengamati dan menemukan keteraturan, kesamaan, atau kejadian yang berulang di dalam suatu sistem (Mushthofa dkk., 2021). Penerapan pengenalan pola pada game <em>Roket Algoritma</em> tampak pada perilaku rintangan dan siklus pergantian fase permainan. Objek meteor muncul secara berulang dari bagian atas layar dan jatuh lurus ke bawah dengan pola peningkatan kecepatan yang teratur seiring bertambahnya skor pemain. Selain itu, permainan menerapkan pola kejadian berulang setiap kali skor mencapai kelipatan lima (5, 10, 15, dan kelipatan berikutnya), di mana hujan meteor berhenti sementara dan satu pesawat alien turun untuk memberikan tantangan kuis.
+              </p>
+            </div>
+            <div>
+              <h4>c. Abstraksi</h4>
+              <p>
+                Abstraksi merupakan proses memusatkan perhatian pada informasi inti yang penting bagi jalannya sistem sekaligus mengabaikan detail rumit yang tidak diperlukan (Wing, 2006; Mushthofa dkk., 2021). Dalam pembuatan <em>Roket Algoritma</em>, abstraksi diterapkan pada penyederhanaan visual objek serta perhitungan deteksi tabrakan. Karakter roket, batuan meteor, pesawat alien, dan sinar laser tidak menggunakan berkas gambar eksternal yang berat, melainkan diabstraksikan menjadi susunan bentuk geometris sederhana melalui <em>Canvas Primitive Shapes</em> (segitiga, lingkaran, elips, dan poligon) yang tetap mudah dikenali. Selain itu, deteksi tabrakan antara badan roket dan batu meteor yang berbentuk tidak beraturan disederhanakan menjadi perhitungan jarak titik pusat antarlingkaran sehingga proses komputasi berjalan ringan, serta tampilan kuis dipisahkan ke dalam elemen pop-up HTML agar teks soal panjang tetap rapi di berbagai ukuran layar.
+              </p>
+            </div>
+            <div>
+              <h4>d. Algoritma</h4>
+              <p>
+                Algoritma adalah urutan langkah-langkah logis dan sistematis yang disusun secara runtut dari awal hingga akhir untuk menyelesaikan suatu permasalahan (Mushthofa dkk., 2021). Pada game <em>Roket Algoritma</em>, algoritma mengatur keseluruhan alur berjalannya permainan. Proses dimulai dari penampilan layar menu utama, dilanjutkan dengan inisialisasi skor nol dan tiga nyawa ketika pemain menekan tombol mulai. Selama permainan berlangsung, pemain menggerakkan roket secara horizontal untuk menghindari meteor yang jatuh dan mengumpulkan satu poin setiap kali meteor melewati batas bawah layar. Ketika skor mencapai kelipatan lima, alur berpindah ke fase alien yang memicu tembakan laser otomatis roket serta menampilkan satu soal acak dengan batas waktu 10 detik. Jawaban yang benar memberikan bonus dua poin dan mengembalikan permainan ke fase meteor, sedangkan jawaban yang salah mengurangi satu nyawa, hingga algoritma mengakhiri permainan dengan menampilkan layar menang apabila target skor 80 tercapai atau layar kalah apabila seluruh nyawa habis.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="perancangan" class="bagian">
+          <div class="bagian-kepala">
+            <span class="bagian-no">03</span>
+            <div>
+              <span class="subbab">Bab III · Perancangan Game</span>
+              <h2>Rancangan sebelum kode ditulis.</h2>
+            </div>
+          </div>
+
+          <h3>3.1 Judul dan Deskripsi Singkat Game</h3>
+          <p class="lead">
+            Game interaktif berbasis web yang dikembangkan dalam kegiatan ini berjudul <em>Roket Algoritma</em>. Permainan ini mengusung genre <em>arcade</em> ketangkasan yang dipadukan dengan unsur edukasi (<em>edugame</em>) bertema penjelajahan ruang angkasa. Dalam alur ceritanya, pemain berperan sebagai pengendali sebuah pesawat roket yang sedang menempuh jalur penerbangan di antariksa yang dipenuhi hujan batu meteor serta dihadang oleh pesawat alien.
+          </p>
+          <p>
+            Selama permainan berlangsung, pemain harus menggerakkan roket ke arah kiri dan kanan pada sumbu horizontal untuk menghindari meteor yang jatuh dari bagian atas layar. Pada setiap pencapaian skor kelipatan lima, perjalanan roket akan terhenti sementara oleh kemunculan satu pesawat alien. Roket secara otomatis menembakkan laser ke arah alien, yang kemudian memicu munculnya jendela kuis pilihan ganda berisi pertanyaan seputar mata pelajaran Informatika dengan batas waktu menjawab selama 10 detik. Melalui perpaduan mekanisme menghindar dan tantangan menjawab soal secara cepat, <em>Roket Algoritma</em> dirancang agar pemain dapat merasakan keseruan bermain sekaligus menguji pemahaman konsep Informatika secara interaktif.
+          </p>
+
+          <h3>3.2 Target Pengguna</h3>
+          <p>
+            Sasaran utama pengguna game <em>Roket Algoritma</em> adalah siswa Sekolah Menengah Atas (SMA) maupun Sekolah Menengah Kejuruan (SMK), khususnya peserta didik kelas X, XI, dan XII yang mempelajari mata pelajaran Informatika. Pemilihan target pengguna tersebut disesuaikan dengan isi bank soal di dalam permainan yang memuat 15 pertanyaan Informatika dari materi pembelajaran kelas X, XI, dan XII. Selain ditujukan bagi siswa sekolah, permainan ini juga dapat dimainkan oleh pelajar pada umumnya maupun masyarakat luas yang ingin melatih ketangkasan serta mengasah wawasan dasar di bidang Informatika.
+          </p>
+          <p>
+            Dari segi kompatibilitas perangkat, <em>Roket Algoritma</em> dirancang dengan tampilan antarmuka yang responsif sehingga dapat diakses langsung melalui peramban web (<em>web browser</em>) tanpa memerlukan proses instalasi tambahan. Permainan ini dapat dimainkan dengan nyaman baik pada perangkat telepon pintar (<em>smartphone</em>) menggunakan kontrol sentuh dan geser layar (<em>touch/swipe</em>) maupun pada laptop dan komputer menggunakan gerakan kursor <em>mouse</em> serta tombol panah kiri dan kanan (atau tombol A dan D) pada papan ketik (<em>keyboard</em>).
+          </p>
+
+          <h3>3.3 Aturan Permainan</h3>
+          <p>
+            Agar permainan berjalan secara adil, terstruktur, dan menantang, <em>Roket Algoritma</em> menerapkan seperangkat aturan yang mengatur nyawa pemain, kemunculan rintangan, perolehan skor, hingga penentuan kondisi menang dan kalah. Adapun rincian aturan permainan tersebut adalah sebagai berikut:
+          </p>
+          <div class="pokok">
+            <div>
+              <h4>a. Nyawa Pemain</h4>
+              <p>
+                Pemain memulai permainan dengan bekal <strong>3 nyawa</strong> yang ditampilkan melalui tiga ikon hati pada sudut kanan atas layar permainan. Nyawa pemain akan berkurang <strong>1</strong> apabila roket bertabrakan dengan batu meteor yang jatuh dari atas layar. Setelah terjadi tabrakan dengan meteor, sistem memberikan jeda waktu kebal (<em>invulnerability</em>) selama <strong>1 detik</strong> yang ditandai dengan efek roket berkedip dan lingkaran pelindung biru sian agar nyawa pemain tidak langsung berkurang berkali-kali akibat sentuhan beruntun dalam waktu singkat. Selain tabrakan dengan meteor, nyawa juga akan berkurang <strong>1</strong> apabila pemain memberikan jawaban yang salah atau kehabisan batas waktu saat menjawab pertanyaan kuis dari alien.
+              </p>
+            </div>
+            <div>
+              <h4>b. Rintangan dan Fase Permainan</h4>
+              <p>Permainan berjalan dalam dua fase yang bergantian secara teratur, yaitu Fase Meteor dan Fase Alien (Kuis):</p>
+              <ol class="daftar-ringkas">
+                <li><strong>Fase Meteor:</strong> Batu-batu meteor muncul secara acak dari bagian atas layar dan jatuh lurus ke bawah sebagai rintangan utama yang wajib dihindari roket. Ukuran, bentuk, dan kecepatan jatuh meteor dibuat bervariasi serta semakin meningkat seiring bertambahnya skor yang dikumpulkan pemain.</li>
+                <li><strong>Fase Alien (Kuis):</strong> Setiap kali perolehan skor pemain mencapai kelipatan <strong>5</strong> (seperti skor 5, 10, 15, dan seterusnya), kemunculan meteor dihentikan sementara dan satu pesawat alien turun dari bagian atas hingga berhenti di tengah layar atas. Roket secara otomatis menembakkan sinar laser ke arah alien. Saat laser mengenai alien, permainan dijeda sementara (<em>pause</em>) dan menampilkan jendela pop-up kuis berisi satu pertanyaan pilihan ganda yang diambil secara acak dari bank soal berjumlah 15 pertanyaan Informatika. Pemain memiliki batas waktu selama <strong>10 detik</strong> untuk memilih satu dari empat pilihan jawaban (A, B, C, atau D) melalui klik, sentuhan layar, maupun tombol angka 1 sampai 4 pada papan ketik.</li>
+              </ol>
+            </div>
+            <div>
+              <h4>c. Sistem Skor</h4>
+              <p>
+                Pada awal permainan, skor pemain bernilai <strong>0</strong>. Setiap satu batu meteor yang berhasil dihindari hingga melewati batas bawah layar akan memberikan tambahan skor sebesar <strong>+1 poin</strong>. Pada saat memasuki fase kuis alien, apabila pemain berhasil memilih jawaban yang benar sebelum batas waktu 10 detik habis, pesawat alien akan hancur dan pemain mendapatkan tambahan bonus skor sebesar <strong>+2 poin</strong>, lalu permainan kembali melanjutkan fase meteor. Sebaliknya, apabila pemain memilih jawaban yang salah atau batas waktu 10 detik habis, pesawat alien akan menembakkan sinar laser merah balasan yang mengenai roket sehingga nyawa pemain berkurang 1 tanpa mendapatkan tambahan poin.
+              </p>
+            </div>
+            <div>
+              <h4>d. Kondisi Menang</h4>
+              <p>
+                Pemain dinyatakan <strong>Menang</strong> apabila berhasil bertahan melewati rintangan hujan meteor serta menjawab tantangan kuis dari alien hingga mengumpulkan perolehan skor mencapai target akhir sebesar <strong>80 poin</strong>, atau apabila seluruh <strong>15 soal kuis</strong> di dalam bank soal telah habis terjawab. Ketika salah satu kondisi tersebut tercapai, permainan berhenti dan sistem menampilkan layar kemenangan beserta rincian skor akhir dan statistik permainan.
+              </p>
+            </div>
+            <div>
+              <h4>e. Kondisi Kalah (<em>Game Over</em>)</h4>
+              <p>
+                Pemain dinyatakan <strong>Kalah</strong> apabila seluruh kesempatan atau nyawa yang dimiliki telah habis (bernilai <strong>0</strong>) akibat bertabrakan dengan meteor maupun gagal menjawab pertanyaan alien sebelum berhasil mencapai kondisi kemenangan. Ketika nyawa mencapai angka nol, permainan langsung berakhir dan sistem menampilkan layar kekalahan beserta ringkasan skor akhir pemain.
+              </p>
+            </div>
+          </div>
+
+          <h3>3.4 Peta Alur Layar (<em>Flowchart</em>)</h3>
+          <p>
+            Sistem antarmuka dalam game <em>Roket Algoritma</em> terdiri atas enam kondisi layar yang saling terhubung, yaitu Layar Menu Utama, Layar Cara Bermain, Layar Permainan, Layar Kuis (<em>Pop-up Overlay</em>), Layar Menang, dan Layar Kalah (<em>Game Over</em>). Alur perpindahan antarlayar dimulai dari Menu Utama yang menyediakan tombol <strong>Mulai Misi</strong> untuk langsung masuk ke Layar Permainan serta tombol <strong>Cara Bermain</strong> untuk membaca petunjuk permainan terlebih dahulu. Dari Layar Cara Bermain, pemain dapat menekan tombol <strong>Kembali</strong> untuk menuju Menu Utama atau menekan tombol <strong>Siap, Mulai!</strong> untuk langsung memulai permainan.
+          </p>
+          <p>
+            Selama berada di Layar Permainan, apabila skor pemain mencapai kelipatan lima, layar akan memunculkan pop-up <strong>Layar Kuis</strong> dengan batas waktu 10 detik dan kembali ke Layar Permainan setelah pemain selesai menjawab atau waktu habis. Jika pada Layar Permainan skor pemain berhasil mencapai target 80 poin atau seluruh 15 soal kuis habis terjawab, alur layar berpindah menuju <strong>Layar Menang</strong>. Sebaliknya, jika nyawa pemain habis menjadi nol, alur layar berpindah menuju <strong>Layar Kalah</strong>. Dari kedua layar hasil akhir tersebut, pemain dapat menekan tombol <strong>Main Lagi</strong> atau <strong>Coba Lagi</strong> untuk langsung mengulang permainan, maupun menekan tombol <strong>Menu Utama</strong> untuk kembali ke layar awal. Peta alur layar tersebut digambarkan dalam bagan alir (<em>flowchart</em>) berikut:
+          </p>
+          <div class="kode bagan">
+            <div class="kode-kepala">
+              <span class="kode-label">Bagan alir · enam kondisi layar</span>
+            </div>
+            <pre><code>                      +------------------------------+
+             +-------&gt;|          MENU UTAMA          |&lt;-------+
+             |        | [Mulai Misi]  [Cara Bermain] |        |
+             |        +-------+--------------+-------+        |
+             |               /                \               |
+   Klik [Kembali]           /                  \              |
+             |   Klik [Cara Bermain]     Klik [Mulai Misi]    |
+             |            /                      \            |
+             |           v                        v           |
+    +--------+--------------+          +-------------------------+
+    |     CARA BERMAIN      |          |     LAYAR PERMAINAN     |&lt;------+
+    |  (Panduan &amp; Kontrol)  |          | (Hindari Meteor/Alien)  |       |
+    +-----------+-----------+          +----+--------+--------+--+       |
+                |                           |        |        |          |
+                +--- Klik [Siap, Mulai!] --&gt;+        |        |          |
+                                            |        |        |          |
+                               Skor Kelipatan 5      |        |          |
+                                            |        |        |          |
+                                            v        |        |          |
+                                    +---------------+ |        |          |
+                                    |  LAYAR KUIS   | |        |          |
+                                    | (Pop-Up 10dtk)| |        |          |
+                                    +-------+-------+ |        |          |
+                                            |         |        |          |
+                                   Jawab / Waktu Habis|        |          |
+                                            |         |        |          |
+                                            +--------&gt;+        |          |
+                                                      |        |          |
+                                  Skor &gt;= 80 atau     |        | Nyawa == 0
+                                  15 Soal Habis       |        |          |
+                                            +---------+        +------+   |
+                                            v                         v   |
+                                +-----------------------+ +-----------------------+
+                                |     LAYAR MENANG      | |      LAYAR KALAH      |
+                                |  (Skor Akhir &amp; Hasil) | |     (Game Over)       |
+                                +-----+-----------+-----+ +-----+-----------+-----+
+                                      |           |             |           |
+                      Klik [Main Lagi]|           +------+------+           | Klik [Coba Lagi]
+                                      |                  |                  |
+                                      |         Klik [Menu Utama]           |
+                                      |         (kembali ke atas)           |
+                                      +------------------+------------------+
+                                                         |
+                                                         +------------------+</code></pre>
+          </div>
+          <div class="catatan">
+            <strong>Catatan.</strong> Enam kondisi layar di atas menjadi dasar penamaan status pada
+            <code>state manager</code> di Bab IV, sehingga alur di kode mengikuti peta ini tanpa
+            cabang layar tambahan.
+          </div>
+
+          <h3>3.5 Daftar Karakter dan Latar</h3>
+          <p>
+            Seluruh elemen visual yang tampil di dalam arena permainan <em>Roket Algoritma</em> dirancang menggunakan bentuk-bentuk geometris dasar (<em>Canvas Primitive Shapes</em>) pada elemen HTML5 Canvas berdasarkan perhitungan koordinat sumbu X dan Y. Daftar karakter, rintangan, proyektil, serta latar belakang yang digunakan dalam permainan ini meliputi:
+          </p>
+          <ol class="daftar-nomor">
+            <li><strong>Karakter Utama (Roket):</strong> Pesawat antariksa yang dikendalikan oleh pemain di bagian bawah layar dan dapat bergerak ke kiri maupun ke kanan secara horizontal. Karakter roket digambar dari susunan bentuk geometris dasar, meliputi badan roket meruncing dengan gradasi logam putih kebiruan, dua sirip penyeimbang berbentuk segitiga berwarna merah muda di sisi kiri dan kanan, kaca kokpit berbentuk lingkaran biru tua berbingkai biru sian dengan pantulan cahaya putih, serta nyala api pendorong berbentuk tiga lapisan segitiga (merah-oranye, jingga, dan kuning pucat) di bagian bawah yang berkedip dinamis.</li>
+            <li><strong>Rintangan Utama (Meteor):</strong> Bongkahan batu luar angkasa yang jatuh dari bagian atas layar sebagai rintangan yang harus dihindari roket. Objek meteor digambar menggunakan bentuk poligon segi sepuluh tidak beraturan dengan gradasi warna abu-abu kecokelatan, dilengkapi tiga lingkaran kecil berwarna lebih gelap sebagai tekstur kawah batu serta titik pantulan cahaya pada sisi kiri atas.</li>
+            <li><strong>Musuh Khusus atau <em>Boss</em> (Alien):</strong> Pesawat piring terbang (<em>UFO</em>) yang muncul satu per satu setiap kali pemain mencapai skor kelipatan lima untuk memberikan tantangan kuis Informatika. Pesawat alien dikelilingi pendaran cahaya hijau lembut dan disusun dari piringan elips biru gelap bertepi biru sian di bagian bawah, kubah setengah elips berwarna hijau toska transparan, empat titik lampu indikator berwarna-warni (merah muda, kuning, biru sian, dan hijau muda), serta sosok kepala alien berbentuk lingkaran hijau di bagian atas yang memiliki sepasang mata besar berbentuk elips hitam, mulut melengkung kecil, tiga garis tentakel di bagian bawah, dan satu antena lurus berujung lingkaran merah muda yang berkedip.</li>
+            <li><strong>Proyektil (Laser Roket dan Laser Alien):</strong> Pancaran sinar energi lurus yang muncul saat fase kuis berlangsung. Laser roket berupa garis sinar lurus berwarna biru sian terang berinti putih yang ditembakkan dari moncong roket ke atas menuju pesawat alien dan memunculkan lingkaran efek tumbukan saat mengenai sasaran. Sebaliknya, laser alien berupa garis sinar lurus berwarna merah terang berinti putih kemerahan yang ditembakkan dari pesawat alien ke bawah menuju roket apabila pemain memberikan jawaban yang salah atau kehabisan batas waktu menjawab, disertai lingkaran peringatan merah di sekitar roket.</li>
+            <li><strong>Latar Belakang (<em>Background</em>):</strong> Hamparan ruang angkasa malam yang digambarkan menggunakan warna latar gradasi biru dongker sangat gelap hingga hitam pekat, dilengkapi pendaran kabut nebula berwarna biru dan merah muda samar di sudut layar. Pada latar belakang tersebut terdapat puluhan titik lingkaran kecil berwarna putih kebiruan dengan ukuran dan tingkat kecerahan bervariasi yang berkelap-kelip serta bergerak turun dari atas ke bawah secara terus-menerus untuk memberikan kesan bahwa roket sedang melaju menembus ruang angkasa. Khusus pada layar menu utama dan layar cara bermain, turut ditampilkan ilustrasi planet bercincin samar di sudut kanan atas layar.</li>
+          </ol>
+        </section>
+
+        <section id="ringkasan" class="bagian">
+          <div class="bagian-kepala">
+            <span class="bagian-no">04</span>
             <div>
               <span class="subbab">Bab IV · Proses pembuatan</span>
               <h2>Satu berkas, satu misi: berpikir komputasional.</h2>
@@ -2066,7 +2602,7 @@
 
         <section id="mekanik" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">02</span>
+            <span class="bagian-no">05</span>
             <div>
               <span class="subbab">Ringkasan mekanik</span>
               <h2>Tiga fase, satu alur yang dijaga.</h2>
@@ -2170,7 +2706,7 @@
         </section>
         <section id="proses" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">03</span>
+            <span class="bagian-no">06</span>
             <div>
               <span class="subbab">Subbab 4.1 · Langkah pengerjaan</span>
               <h2>Dari prompt ke draft ketiga.</h2>
@@ -2274,7 +2810,7 @@
         </section>
         <section id="prompt" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">04</span>
+            <span class="bagian-no">07</span>
             <div>
               <span class="subbab">Subbab 4.2 · Prompt yang dipakai</span>
               <h2>Prompt yang mengunci aturan main.</h2>
@@ -2425,7 +2961,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
         </section>
         <section id="kode" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">05</span>
+            <span class="bagian-no">08</span>
             <div>
               <span class="subbab">Bab IV · Subbab 4.3 · Kode lengkap</span>
               <h2>Kode final, utuh tanpa dipotong.</h2>
@@ -5289,7 +5825,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
 
         <section id="bedah" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">06</span>
+            <span class="bagian-no">09</span>
             <div>
               <span class="subbab">Bab IV · Subbab 4.4 · Bedah kode</span>
               <h2>Sepuluh bagian, satu alur baca.</h2>
@@ -7279,7 +7815,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
 
         <section id="uji" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">07</span>
+            <span class="bagian-no">10</span>
             <div>
               <span class="subbab">Bab V · Hasil uji coba</span>
               <h2>Sembilan percobaan, satu variabel setiap kali.</h2>
@@ -7366,7 +7902,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
         </section>
         <section id="kendala" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">08</span>
+            <span class="bagian-no">11</span>
             <div>
               <span class="subbab">Subbab 4.6 · Kendala dan solusi</span>
               <h2>Delapan kendala, satu pola perbaikan.</h2>
@@ -7464,7 +8000,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
         </section>
         <section id="gambar" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">09</span>
+            <span class="bagian-no">12</span>
             <div>
               <span class="subbab">Lampiran · Gambar 4.1–4.9</span>
               <h2>Sembilan titik dokumentasi visual.</h2>
@@ -7524,7 +8060,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
 
         <section id="pratinjau" class="bagian">
           <div class="bagian-kepala">
-            <span class="bagian-no">10</span>
+            <span class="bagian-no">13</span>
             <div>
               <span class="subbab">Lampiran · Pratinjau game</span>
               <h2>Coba versi finalnya.</h2>
@@ -7553,6 +8089,33 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
             panah atau angka. Hindari meteor, kumpulkan poin, lalu jawab kuis alien sebelum
             waktu habis.
           </div>
+        </section>
+
+        <section id="pustaka" class="bagian">
+          <div class="bagian-kepala">
+            <span class="bagian-no">14</span>
+            <div>
+              <span class="subbab">Daftar Pustaka</span>
+              <h2>Sumber yang dirujuk.</h2>
+            </div>
+          </div>
+
+          <ol class="daftar-pustaka">
+            <li>
+              Canva. <em>Canva Code and Magic Studio Documentation</em>. Diakses dari
+              <a href="https://www.canva.com/" target="_blank" rel="noopener">https://www.canva.com/</a>
+            </li>
+            <li>
+              Mozilla Developer Network (MDN). <em>Canvas API, JavaScript, HTML, and CSS Web Docs</em>. Diakses dari
+              <a href="https://developer.mozilla.org/" target="_blank" rel="noopener">https://developer.mozilla.org/</a>
+            </li>
+            <li>
+              Mushthofa, dkk. (2021). <em>Informatika untuk SMA Kelas X</em>. Jakarta: Pusat Kurikulum dan Perbukuan, Badan Penelitian dan Pengembangan dan Perbukuan, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.
+            </li>
+            <li>
+              Wing, J. M. (2006). Computational Thinking. <em>Communications of the ACM</em>, 49(3), 33–35.
+            </li>
+          </ol>
         </section>
       </article>
     </div>
