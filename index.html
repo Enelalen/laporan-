@@ -8175,6 +8175,13 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
       window.addEventListener("load", mintaPerbarui);
       perbaruiKemajuan();
 
+      if ("scrollRestoration" in history && !window.location.hash) {
+        history.scrollRestoration = "manual";
+        window.addEventListener("load", function () {
+          window.scrollTo(0, 0);
+        });
+      }
+
       var aktifSekarang = "";
 
       function tandaiAktif(id) {
