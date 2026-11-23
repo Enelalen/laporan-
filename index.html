@@ -491,7 +491,7 @@
       align-self: start;
     }
 
-    .daftar-isi > p {
+    .daftar-isi-label {
       padding-bottom: 12px;
       margin-bottom: 14px;
       border-bottom: 1px solid var(--garis);
@@ -500,6 +500,10 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+    }
+
+    .daftar-isi-pemicu {
+      display: none;
     }
 
     .daftar-isi ol {
@@ -1678,57 +1682,103 @@
         margin-inline: auto;
       }
 
-      /* Daftar isi: chip horizontal, aktif otomatis digeser ke tengah */
+      /* Daftar isi: dropdown vertikal */
       .daftar-isi {
         position: static;
-        margin-bottom: 4px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--garis);
+        margin-bottom: 18px;
+        padding: 0;
+        border: 1px solid var(--garis-2);
+        border-radius: 6px;
+        background: var(--kertas-putih);
+        overflow: hidden;
       }
 
-      .daftar-isi > p:first-child {
-        margin-bottom: 10px;
-      }
-
-      .daftar-isi ol {
-        display: flex;
-        gap: 8px;
-        margin-inline: -2px;
-        padding: 2px 2px 8px;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x proximity;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .daftar-isi ol::-webkit-scrollbar {
+      .daftar-isi-label {
         display: none;
       }
 
+      .daftar-isi-pemicu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 13px 14px;
+        border: 0;
+        background: transparent;
+        color: var(--tinta);
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-align: left;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .daftar-isi-pemicu .panah {
+        color: var(--aksen);
+        font-size: 14px;
+        line-height: 1;
+        transition: transform 0.2s ease;
+      }
+
+      .daftar-isi.terbuka .panah {
+        transform: rotate(180deg);
+      }
+
+      .daftar-isi-panel {
+        display: none;
+        max-height: min(60vh, 420px);
+        overflow-y: auto;
+        padding: 0 10px 10px;
+        border-top: 1px solid var(--garis);
+        overscroll-behavior: contain;
+      }
+
+      .daftar-isi.terbuka .daftar-isi-panel {
+        display: block;
+      }
+
+      .daftar-isi ol {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 6px 0 0;
+      }
+
       .daftar-isi li {
-        flex: 0 0 auto;
-        scroll-snap-align: start;
+        min-width: 0;
       }
 
       .daftar-isi a {
-        margin-left: 0;
-        padding: 7px 11px;
-        border: 1px solid var(--garis);
-        border-radius: 999px;
-        background: var(--kertas-putih);
-        white-space: nowrap;
-        font-size: 12.5px;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 0;
+        padding: 9px 8px;
+        border: 0;
+        border-left: 2px solid transparent;
+        border-radius: 4px;
+        background: transparent;
+        white-space: normal;
+        font-size: 13.5px;
+        line-height: 1.4;
+      }
+
+      .daftar-isi a:hover {
+        background: var(--aksen-lembut);
       }
 
       .daftar-isi li.aktif a {
-        color: var(--kertas-putih);
-        border-color: var(--tinta);
-        background: var(--tinta);
+        color: var(--tinta);
+        border-left-color: var(--aksen);
+        background: var(--aksen-lembut);
       }
 
       .daftar-isi li.aktif a .no {
-        color: rgba(250, 248, 243, 0.7);
+        color: var(--aksen);
       }
 
       /* Isi laporan dan komponen bab I–III */
@@ -2053,7 +2103,7 @@
         <div class="wm-stamp">
           <div class="wm-logo">
             <span>LOGO</span>
-            <img src="img/logo.png" alt="" onerror="this.style.display='none'">
+            <img src="img/logo.webp" alt="" onerror="this.style.display='none'">
           </div>
           <div class="wm-teks">
             <span class="wm-sekolah">SMAN 1 CISARUA</span>
@@ -2188,8 +2238,12 @@
     </section>
     <div class="wadah lembar">
       <aside class="daftar-isi" aria-label="Daftar isi">
-        <p>Daftar isi</p>
-        <ol>
+        <button class="daftar-isi-pemicu" type="button" aria-expanded="false" aria-controls="panelDaftarIsi">
+          Daftar isi <span class="panah" aria-hidden="true">▾</span>
+        </button>
+        <div class="daftar-isi-panel" id="panelDaftarIsi">
+          <p class="daftar-isi-label">Daftar isi</p>
+          <ol>
           <li class="aktif"><a href="#pendahuluan"><span class="no">01</span> Pendahuluan</a></li>
           <li><a href="#landasan"><span class="no">02</span> Landasan teori</a></li>
           <li><a href="#perancangan"><span class="no">03</span> Perancangan game</a></li>
@@ -2204,12 +2258,13 @@
           <li><a href="#gambar"><span class="no">12</span> Tangkapan layar</a></li>
           <li><a href="#pratinjau"><span class="no">13</span> Pratinjau</a></li>
           <li><a href="#pustaka"><span class="no">14</span> Daftar pustaka</a></li>
-        </ol>
-        <p class="isi-catatan">
-          Draft 3 · ±2.800 baris<br>
-          Satu berkas HTML<br>
-          Tanpa aset eksternal
-        </p>
+          </ol>
+          <p class="isi-catatan">
+            Draft 3 · ±2.800 baris<br>
+            Satu berkas HTML<br>
+            Tanpa aset eksternal
+          </p>
+        </div>
       </aside>
 
       <article class="laporan">
@@ -8015,39 +8070,39 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
 
           <div class="galeri">
             <figure class="slot gambar">
-              <img src="img/4-1.png" width="1120" height="653" alt="Beranda Canva dengan fitur Kode yang dipilih.">
+              <img src="img/4-1.webp" width="1120" height="653" alt="Beranda Canva dengan fitur Kode yang dipilih.">
               <figcaption><b>Gambar 4.1</b> Beranda Canva dan fitur Kode yang dipilih.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/4-2.png" width="1120" height="653" alt="Editor Canva Code dengan kolom prompt masih kosong.">
+              <img src="img/4-2.webp" width="1120" height="653" alt="Editor Canva Code dengan kolom prompt masih kosong.">
               <figcaption><b>Gambar 4.2</b> Editor Canva Code dengan kolom prompt masih kosong.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/4-3.png" width="1131" height="666" alt="Prompt lengkap terisi di editor Canva Code sebelum tombol Generate ditekan.">
+              <img src="img/4-3.webp" width="1131" height="666" alt="Prompt lengkap terisi di editor Canva Code sebelum tombol Generate ditekan.">
               <figcaption><b>Gambar 4.3</b> Prompt lengkap terisi sebelum tombol Generate ditekan.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/4-4.png" width="1125" height="603" alt="Proses pembuatan kode di Canva dengan indikator loading.">
+              <img src="img/4-4.webp" width="1125" height="603" alt="Proses pembuatan kode di Canva dengan indikator loading.">
               <figcaption><b>Gambar 4.4</b> Proses pembuatan kode dan indikator loading.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/game-menu.png" width="1280" height="800" alt="Menu utama Roket Algoritma dengan judul besar, tombol Mulai Misi, dan tombol Cara Bermain.">
+              <img src="img/game-menu.webp" width="1280" height="800" alt="Menu utama Roket Algoritma dengan judul besar, tombol Mulai Misi, dan tombol Cara Bermain.">
               <figcaption><b>Gambar 4.5</b> Menu utama draft ketiga: judul, Mulai Misi, dan Cara Bermain.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/game-bermain.png" width="1280" height="800" alt="Permainan berjalan dengan HUD skor, tiga hati, meteor, dan roket di bagian bawah.">
+              <img src="img/game-bermain.webp" width="1280" height="800" alt="Permainan berjalan dengan HUD skor, tiga hati, meteor, dan roket di bagian bawah.">
               <figcaption><b>Gambar 4.6</b> Permainan berjalan: HUD skor, hati, meteor, dan roket.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/game-kuis.png" width="1280" height="800" alt="Pop-up kuis alien dengan wajah alien, bilah waktu 10 detik, soal, dan empat pilihan jawaban.">
+              <img src="img/game-kuis.webp" width="1280" height="800" alt="Pop-up kuis alien dengan wajah alien, bilah waktu 10 detik, soal, dan empat pilihan jawaban.">
               <figcaption><b>Gambar 4.7</b> Pop-up kuis alien dengan bilah waktu 10 detik.</figcaption>
             </figure>
             <figure class="slot gambar potret">
-              <img src="img/game-hp.png" width="390" height="844" alt="Tampilan permainan di layar HP portrait dengan roket dan meteor.">
+              <img src="img/game-hp.webp" width="390" height="844" alt="Tampilan permainan di layar HP portrait dengan roket dan meteor.">
               <figcaption><b>Gambar 4.8</b> Pengujian di layar HP 390 × 844 dalam orientasi portrait.</figcaption>
             </figure>
             <figure class="slot gambar">
-              <img src="img/game-cara.png" width="1280" height="800" alt="Halaman Cara Bermain dengan lima langkah dan keterangan target 80 poin.">
+              <img src="img/game-cara.webp" width="1280" height="800" alt="Halaman Cara Bermain dengan lima langkah dan keterangan target 80 poin.">
               <figcaption><b>Gambar 4.9</b> Halaman Cara Bermain versi final: target 80 poin, timer 10 detik.</figcaption>
             </figure>
           </div>
@@ -8079,7 +8134,7 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
               <a href="https://roketnela.my.canva.site/" target="_blank" rel="noopener">Buka di tab baru ↗</a>
             </div>
             <a class="pratinjau-pintu" href="https://roketnela.my.canva.site/" target="_blank" rel="noopener">
-              <img src="img/game-menu.png" width="1280" height="800" alt="Menu utama game Roket Algoritma.">
+              <img src="img/game-menu.webp" width="1280" height="800" alt="Menu utama game Roket Algoritma.">
               <span>Mainkan sekarang <strong>Roket Algoritma</strong> roketnela.my.canva.site ↗</span>
             </a>
           </div>
@@ -8195,18 +8250,36 @@ ATURAN PENULISAN KODE (SANGAT PENTING - BAHAN AJAR):
 
           if (!aktif || !window.matchMedia("(max-width: 760px)").matches) return;
 
-          var daftar = tautan.closest("ol");
-          if (!daftar) return;
+          var panel = tautan.closest(".daftar-isi-panel");
+          if (!panel) return;
 
-          var rc = tautan.getBoundingClientRect();
-          var rd = daftar.getBoundingClientRect();
-          var kiri = daftar.scrollLeft + (rc.left - rd.left) - daftar.clientWidth / 2 + rc.width / 2;
-
-          if (typeof daftar.scrollTo === "function") {
-            daftar.scrollTo({ left: kiri, behavior: "smooth" });
-          } else {
-            daftar.scrollLeft = kiri;
+          var rc = item.getBoundingClientRect();
+          var rp = panel.getBoundingClientRect();
+          if (rc.top < rp.top || rc.bottom > rp.bottom) {
+            panel.scrollTop += rc.top - rp.top - rp.height / 2 + rc.height / 2;
           }
+        });
+      }
+
+      var wadahDaftar = document.querySelector(".daftar-isi");
+      var pemicuDaftar = document.querySelector(".daftar-isi-pemicu");
+
+      function tutupDaftar() {
+        if (!wadahDaftar || !pemicuDaftar) return;
+        wadahDaftar.classList.remove("terbuka");
+        pemicuDaftar.setAttribute("aria-expanded", "false");
+      }
+
+      if (pemicuDaftar && wadahDaftar) {
+        pemicuDaftar.addEventListener("click", function () {
+          var terbuka = wadahDaftar.classList.toggle("terbuka");
+          pemicuDaftar.setAttribute("aria-expanded", String(terbuka));
+        });
+
+        tautanIsi.forEach(function (tautan) {
+          tautan.addEventListener("click", function () {
+            if (window.matchMedia("(max-width: 760px)").matches) tutupDaftar();
+          });
         });
       }
 
