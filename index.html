@@ -1397,6 +1397,36 @@
       color: var(--tinta);
     }
 
+    .daftar-nomor.rapi li {
+      padding: 18px 0 20px;
+    }
+
+    .daftar-nomor.rapi h4 {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--tinta);
+    }
+
+    .daftar-nomor.rapi p {
+      max-width: none;
+      margin-bottom: 0;
+    }
+
+    .daftar-nomor.rapi p + p {
+      margin-top: 6px;
+    }
+
+    .daftar-nomor.rapi .label {
+      color: var(--aksen-2);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .pokok {
       margin-top: 22px;
       padding-left: 22px;
@@ -2589,12 +2619,47 @@
           <p>
             Seluruh elemen visual yang tampil di dalam arena permainan <em>Roket Algoritma</em> dirancang menggunakan bentuk-bentuk geometris dasar (<em>Canvas Primitive Shapes</em>) pada elemen HTML5 Canvas berdasarkan perhitungan koordinat sumbu X dan Y. Daftar karakter, rintangan, proyektil, serta latar belakang yang digunakan dalam permainan ini meliputi:
           </p>
-          <ol class="daftar-nomor">
-            <li><strong>Karakter Utama (Roket):</strong> Pesawat antariksa yang dikendalikan oleh pemain di bagian bawah layar dan dapat bergerak ke kiri maupun ke kanan secara horizontal. Karakter roket digambar dari susunan bentuk geometris dasar, meliputi badan roket meruncing dengan gradasi logam putih kebiruan, dua sirip penyeimbang berbentuk segitiga berwarna merah muda di sisi kiri dan kanan, kaca kokpit berbentuk lingkaran biru tua berbingkai biru sian dengan pantulan cahaya putih, serta nyala api pendorong berbentuk tiga lapisan segitiga (merah-oranye, jingga, dan kuning pucat) di bagian bawah yang berkedip dinamis.</li>
-            <li><strong>Rintangan Utama (Meteor):</strong> Bongkahan batu luar angkasa yang jatuh dari bagian atas layar sebagai rintangan yang harus dihindari roket. Objek meteor digambar menggunakan bentuk poligon segi sepuluh tidak beraturan dengan gradasi warna abu-abu kecokelatan, dilengkapi tiga lingkaran kecil berwarna lebih gelap sebagai tekstur kawah batu serta titik pantulan cahaya pada sisi kiri atas.</li>
-            <li><strong>Musuh Khusus atau <em>Boss</em> (Alien):</strong> Pesawat piring terbang (<em>UFO</em>) yang muncul satu per satu setiap kali pemain mencapai skor kelipatan lima untuk memberikan tantangan kuis Informatika. Pesawat alien dikelilingi pendaran cahaya hijau lembut dan disusun dari piringan elips biru gelap bertepi biru sian di bagian bawah, kubah setengah elips berwarna hijau toska transparan, empat titik lampu indikator berwarna-warni (merah muda, kuning, biru sian, dan hijau muda), serta sosok kepala alien berbentuk lingkaran hijau di bagian atas yang memiliki sepasang mata besar berbentuk elips hitam, mulut melengkung kecil, tiga garis tentakel di bagian bawah, dan satu antena lurus berujung lingkaran merah muda yang berkedip.</li>
-            <li><strong>Proyektil (Laser Roket dan Laser Alien):</strong> Pancaran sinar energi lurus yang muncul saat fase kuis berlangsung. Laser roket berupa garis sinar lurus berwarna biru sian terang berinti putih yang ditembakkan dari moncong roket ke atas menuju pesawat alien dan memunculkan lingkaran efek tumbukan saat mengenai sasaran. Sebaliknya, laser alien berupa garis sinar lurus berwarna merah terang berinti putih kemerahan yang ditembakkan dari pesawat alien ke bawah menuju roket apabila pemain memberikan jawaban yang salah atau kehabisan batas waktu menjawab, disertai lingkaran peringatan merah di sekitar roket.</li>
-            <li><strong>Latar Belakang (<em>Background</em>):</strong> Hamparan ruang angkasa malam yang digambarkan menggunakan warna latar gradasi biru dongker sangat gelap hingga hitam pekat, dilengkapi pendaran kabut nebula berwarna biru dan merah muda samar di sudut layar. Pada latar belakang tersebut terdapat puluhan titik lingkaran kecil berwarna putih kebiruan dengan ukuran dan tingkat kecerahan bervariasi yang berkelap-kelip serta bergerak turun dari atas ke bawah secara terus-menerus untuk memberikan kesan bahwa roket sedang melaju menembus ruang angkasa. Khusus pada layar menu utama dan layar cara bermain, turut ditampilkan ilustrasi planet bercincin samar di sudut kanan atas layar.</li>
+          <ol class="daftar-nomor rapi">
+            <li>
+              <div>
+                <h4>Karakter Utama (Roket)</h4>
+                <p><strong class="label">Peran.</strong> Pesawat antariksa yang dikendalikan pemain di bagian bawah layar dan dapat bergerak ke kiri maupun ke kanan secara horizontal.</p>
+                <p><strong class="label">Bentuk.</strong> Badan roket meruncing dengan gradasi logam putih kebiruan; dua sirip penyeimbang berbentuk segitiga merah muda di sisi kiri dan kanan; kaca kokpit berbentuk lingkaran biru tua berbingkai biru sian dengan pantulan cahaya putih.</p>
+                <p><strong class="label">Efek.</strong> Nyala api pendorong berupa tiga lapisan segitiga (merah-oranye, jingga, dan kuning pucat) di bagian bawah yang berkedip dinamis.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Rintangan Utama (Meteor)</h4>
+                <p><strong class="label">Peran.</strong> Bongkahan batu luar angkasa yang jatuh dari bagian atas layar sebagai rintangan yang harus dihindari roket.</p>
+                <p><strong class="label">Bentuk.</strong> Poligon segi sepuluh tidak beraturan dengan gradasi warna abu-abu kecokelatan.</p>
+                <p><strong class="label">Detail.</strong> Tiga lingkaran kecil berwarna lebih gelap sebagai tekstur kawah batu serta titik pantulan cahaya pada sisi kiri atas.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Musuh Khusus atau <em>Boss</em> (Alien)</h4>
+                <p><strong class="label">Peran.</strong> Pesawat piring terbang (<em>UFO</em>) yang muncul satu per satu setiap kali pemain mencapai skor kelipatan lima untuk memberikan tantangan kuis Informatika.</p>
+                <p><strong class="label">Bentuk.</strong> Pendaran cahaya hijau lembut, piringan elips biru gelap bertepi biru sian di bagian bawah, kubah setengah elips hijau toska transparan, serta empat titik lampu indikator berwarna-warni (merah muda, kuning, biru sian, dan hijau muda).</p>
+                <p><strong class="label">Detail.</strong> Kepala alien berbentuk lingkaran hijau di bagian atas dengan sepasang mata besar berbentuk elips hitam, mulut melengkung kecil, tiga garis tentakel di bagian bawah, dan satu antena lurus berujung lingkaran merah muda yang berkedip.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Proyektil (Laser Roket dan Laser Alien)</h4>
+                <p><strong class="label">Peran.</strong> Pancaran sinar energi lurus yang muncul saat fase kuis berlangsung.</p>
+                <p><strong class="label">Laser roket.</strong> Garis sinar lurus biru sian terang berinti putih yang ditembakkan dari moncong roket ke atas menuju pesawat alien dan memunculkan lingkaran efek tumbukan saat mengenai sasaran.</p>
+                <p><strong class="label">Laser alien.</strong> Garis sinar lurus merah terang berinti putih kemerahan yang ditembakkan dari pesawat alien ke bawah menuju roket apabila pemain memberikan jawaban yang salah atau kehabisan batas waktu menjawab, disertai lingkaran peringatan merah di sekitar roket.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Latar Belakang (<em>Background</em>)</h4>
+                <p><strong class="label">Peran.</strong> Hamparan ruang angkasa malam dengan gradasi biru dongker sangat gelap hingga hitam pekat, dilengkapi pendaran kabut nebula biru dan merah muda samar di sudut layar.</p>
+                <p><strong class="label">Bintang.</strong> Puluhan titik lingkaran kecil putih kebiruan dengan ukuran dan tingkat kecerahan bervariasi yang berkelap-kelip serta bergerak turun dari atas ke bawah secara terus-menerus untuk memberikan kesan bahwa roket sedang melaju menembus ruang angkasa.</p>
+                <p><strong class="label">Menu.</strong> Ilustrasi planet bercincin samar di sudut kanan atas layar, khusus pada layar menu utama dan layar cara bermain.</p>
+              </div>
+            </li>
           </ol>
         </section>
 
